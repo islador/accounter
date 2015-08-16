@@ -1,4 +1,6 @@
-Every bucket has a hierarchy position.
+# Accounter
+### Workflow
+https://drive.google.com/open?id=0B3x3REXwXKGhdjQ3YzZreV9ZeDA
 
 Income is added to the highest bucket, then the next highest and so on until it runs out of buckets or money.
 
@@ -23,7 +25,6 @@ Income may be added to a specific bucket.
 
 - Subtract Expense From Bucket
   The Expense is subtracted from the specified bucket.
-
 
 ### Models
 
