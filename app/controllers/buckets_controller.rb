@@ -6,5 +6,6 @@ class BucketsController < ApplicationController
 
   def show
     @bucket = Bucket.find(params[:id])
+    @transactions = @bucket.transactions
   end
 end

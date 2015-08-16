@@ -47,7 +47,7 @@ RSpec.describe BucketsController, type: :controller do
 
     context "with current_user" do
       let(:transaction_1) { FactoryGirl.create(:transaction, bucket: bucket) }
-      let(:trasnaction_2) { FactoryGirl.create(:transaction, bucket: bucket) }
+      let(:transaction_2) { FactoryGirl.create(:transaction, bucket: bucket) }
       before(:each) do
         sign_in user
       end
