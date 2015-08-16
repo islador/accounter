@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :buckets
+  has_many :expenses
+  has_many :incomes
 
   def total
     buckets.sum(:amount)

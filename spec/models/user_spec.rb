@@ -16,6 +16,30 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "incomes" do
+    let(:user_income) { FactoryGirl.create(:income, user: user) }
+    let(:other_income) { FactoryGirl.create(:income) }
+    it "returns the user's incomes" do
+      expect(user.incomes).to eq [user_income]
+    end
+
+    it "does not return other user's incomes" do
+      expect(user.incomes).to_not eq [other_income]
+    end
+  end
+
+  describe "expenses" do
+    let(:user_expense) { FactoryGirl.create(:expense, user: user) }
+    let(:other_expense) { FactoryGirl.create(:expense) }
+    it "returns the user's expenses" do
+      expect(user.expenses).to eq [user_expense]
+    end
+
+    it "does not return other user's expenses" do
+      expect(user.expenses).to_not eq [other_expense]
+    end
+  end
+
   describe "total" do
     let!(:bucket_1) { FactoryGirl.create(:bucket, amount: 200.00, user: user) }
     let!(:bucket_2) { FactoryGirl.create(:bucket, amount: 200.00, user: user) }
