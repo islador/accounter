@@ -10,6 +10,13 @@ Expenses may be subtracted from a specific bucket.
 
 Income may be added to a specific bucket.
 
+## Bucket Orders Controller
+- Index
+  Shows all Bucket Orders
+
+- Show
+  Shows a specific Bucket Order
+  Each bucket in the order displays its current amount
 
 ## Income Controller
 - Add Income
