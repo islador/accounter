@@ -85,4 +85,67 @@ RSpec.describe BucketsController, type: :controller do
       end
     end
   end
+
+  describe "new" do
+    context "with current_user" do
+      let(:user) { FactoryGirl.create(:user) }
+      before(:each) do
+        sign_in user
+      end
+
+      it "returns 200" do
+        get "new"
+        expect(response.status).to be 200
+      end
+    end
+
+    context "without current_user" do
+      it "redirects the user" do
+        get "new"
+        expect(response.status).to be 302
+      end
+
+      it "redirects the user to the signin page" do
+        get "new"
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
+
+  describe "create" do
+    context "with current_user" do
+      let(:user) { FactoryGirl.create(:user) }
+      before(:each) do
+        sign_in user
+      end
+
+      it "returns 302" do
+        post "create", bucket: FactoryGirl.attributes_for(:bucket)
+        expect(response.status).to be 302
+      end
+
+      it "creates a new bucket" do
+        expect {
+          post "create", bucket: FactoryGirl.attributes_for(:bucket)
+        }.to change(Bucket, :count).by(+1)
+      end
+
+      it "redirects to the new bucket's show page" do
+        post "create", bucket: FactoryGirl.attributes_for(:bucket)
+        expect(response).to redirect_to bucket_path(Bucket.first)
+      end
+    end
+
+    context "without current_user" do
+      it "redirects the user" do
+        post "create", bucket: FactoryGirl.attributes_for(:bucket)
+        expect(response.status).to be 302
+      end
+
+      it "redirects the user to the signin page" do
+        post "create", bucket: FactoryGirl.attributes_for(:bucket)
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
 end
