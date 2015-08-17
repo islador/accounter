@@ -11,17 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150816223456) do
+ActiveRecord::Schema.define(version: 20150817012221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "buckets", force: :cascade do |t|
-    t.decimal  "amount",     precision: 8, scale: 2
+  create_table "bucket_orders", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
     t.integer  "user_id"
+    t.text     "bucket_order", default: [],              array: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "distribution", default: [],              array: true
+  end
+
+  create_table "buckets", force: :cascade do |t|
+    t.decimal  "amount",          precision: 8, scale: 2
+    t.string   "name"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "user_id"
+    t.integer  "bucket_order_id"
   end
 
   create_table "expenses", force: :cascade do |t|

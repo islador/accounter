@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :buckets
   has_many :expenses
   has_many :incomes
+  has_many :bucket_orders
 
   def total
     buckets.sum(:amount)

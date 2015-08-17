@@ -16,6 +16,15 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "bucket_orders" do
+    let(:bucket_order) { FactoryGirl.create(:bucket_order, user: user) }
+    let(:other_bucket_order) { FactoryGirl.create(:bucket_order) }
+
+    it "returns the user's bucket_orders" do
+      expect(user.bucket_orders).to eq [bucket_order]
+    end
+  end
+
   describe "incomes" do
     let(:user_income) { FactoryGirl.create(:income, user: user) }
     let(:other_income) { FactoryGirl.create(:income) }

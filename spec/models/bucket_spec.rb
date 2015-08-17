@@ -19,4 +19,13 @@ RSpec.describe Bucket, type: :model do
       expect(bucket.transactions).to eq [transaction_1, transaction_2]
     end
   end
+
+  describe "bucket_order" do
+    let(:bucket_order) { FactoryGirl.create(:bucket_order)}
+    let(:bucket) { FactoryGirl.create(:bucket, bucket_order: bucket_order) }
+
+    it "returns the bucket order this bucket is associated with" do
+      expect(bucket.bucket_order).to eq bucket_order
+    end
+  end
 end
