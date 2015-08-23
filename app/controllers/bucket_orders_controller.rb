@@ -1,0 +1,2 @@
+class BucketOrdersController < ApplicationController
+end

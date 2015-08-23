@@ -10,7 +10,7 @@ class BucketOrder < ActiveRecord::Base
     # The input's distribute method needs to handle the actual distribution.
     buckets.each do |bucket|
       distribution.each do |distribution|
-        income.distribute(bucket, distribution)
+        input.distribute(bucket, distribution)
       end
     end
   end
